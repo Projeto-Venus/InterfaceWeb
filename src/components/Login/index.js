@@ -16,7 +16,7 @@ export default function Login() {
 
      
     <form className='formulario'>
-      <h1>Bem Vindos</h1><br/><hr width='300px'/>
+      <h1>Bem Vindos</h1><br/><hr/>
       
       <label><AiOutlineUser/></label><input  type='email' placeholder='Email'></input><br/>
       <label><BsLock/></label><input  type='password' placeholder='Senha'></input><br/>

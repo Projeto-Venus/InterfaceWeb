@@ -5,12 +5,29 @@ import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 import Logo from '../../assets/logo-venus.png';
 import medicafundo from '../../assets/clinica-medica-chamada.jpg';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 
 
 export default function Register() {
   const [formValues,setFormValues] = useState({});
   const navigate = useNavigate();
-  const {register, handleSubmit} = useForm();
+
+  const getFormatedDate = (currentDate) => {
+    return currentDate.split('/').reverse().join('-');
+  }
+
+  const schema = yup.object({
+    nome: yup.string().min(10,"O campo deve conter no minimo 10 caracters").matches(/^[aA-zZ\s]+$/,"Nome inválido!").required("Campo Obrigatório!"),
+    nomesocial: yup.string().min(4,"O campo deve conter no minimo 4 caracters").required("Campo Obrigtório!"),
+    numero_cartao: yup.string().length(8,"O campo deve conter 8 números!").matches(/^[0-9]{8}/,"Número Inválido").required("Campo Obrigtório!"),
+    datanasc:yup.date().min(getFormatedDate('01/01/1950'),"data inválida!").max(getFormatedDate('31/12/2005'), "data inválida!").required("Campo obrigatório"),
+    cpf:yup.string().length(11,"Cpf inválido!").matches(/^[0-9]{3}?[0-9]{3}?[0-9]{3}?[0-9]{2}/,"Cpf inválido!").required("Campo obrigatório!")
+   
+  }).required();
+
+  const {register, handleSubmit ,formState: { errors }} = useForm({resolver:yupResolver(schema)});
+
 
 
   const handleInputChange =(e)=>{
@@ -23,7 +40,7 @@ export default function Register() {
   }
 
   useEffect(()=>{
-    api.get('/getusers').then((response)=>{
+    api.get('/users').then((response)=>{
       console.log(response.data);
     }).catch(err=>{
       console.log(err);
@@ -81,67 +98,88 @@ export default function Register() {
       </ul>
     <img src={Logo} className='logo-footer' alt='logo-venus' ></img>
     </footer>
+   
 
+   
     <img src={medicafundo} className="image-fundo" alt="img-fundo"></img>
     <div className="register">
     <h1>DADOS PESSOAIS</h1>
-      <form className='formularioConta' onSubmit={handleSubmit(onSubmit)}>
+    <form className="row g-2" onSubmit={handleSubmit(onSubmit)}>
 
-      <div margin-right="450px">
-     <label>Nome</label><input className='inputT' type="text"  {...register("nome")} />
-     </div>
-     <label>Nome Social</label><input className='inputT' type="text"    {...register("nomesocial")}/>
+    <div className="col-md-5 offset-md-1">
+    <label className="form-label">Nome</label>
+    <input className='form-control' type="text" inputMode="text"  {...register("nome")} />
+    <span>{errors.nome?.message}</span>
+    </div>
 
-     <div>
-     <label>Email</label><input className='inputT' type="email" name="login"  {...register("login")} />
-     </div>
+    <div className="col-md-5 ms-3">
+    <label className="form-label">Nome Social</label>
+    <input className="form-control" type="text"    {...register("nomesocial")}/>
+    <span>{errors.nomesocial?.message}</span>
+    </div>
 
-     <div>
-     <label>Nome</label><input className='inputT' type="text" name="numero_cartao" {...register("numero_cartao")}  size="20" maxLength="40"/>
-     </div>
+    <div className='col-md-6 offset-md-1'>
+    <label className='form-label'>Email</label>
+    <input className="form-control" type="email" name="login"  {...register("login")} />
+    </div>
 
-      <div className='select-raca'>
-      <label>Raça</label> <select type='text'  name='raca' {...register("raca")}>
+    <div className="col-md-6 offset-md-1">
+    <label className='form-label'>Número CSN</label>
+    <input className="form-control" type="text" name="numero_cartao" inputMode="numeric" {...register("numero_cartao")}  size="20" maxLength="40"/>
+    <span>{errors.numero_cartao?.message}</span>
+    </div>
+
+      <div className="col-md-4 ms-3" >
+      <label className='form-label'>Raça</label> 
+      <select className='form-select' type='text'  name='raca' {...register("raca")}>
         <option value='preto'>Preto</option>
         <option value='parda' selected >Parda</option>
         <option value='branco'>Branco</option>
         </select>
         </div>
 
-        <div className="input-senha">
-     <label>Senha</label> <input className='inputT' type="password" name="senha"  size="20" maxLength="20"   {...register("senha")} />
+        <div className="col-md-6 offset-md-1">
+      <label className='form-label'>Senha</label> 
+      <input className='form-control' type="password" name="senha"  size="20" maxLength="20"   {...register("senha")} />
       </div>
 
-      <div>
-      <label>CPF</label><input className='inputT' name='cpf' type="text" size='11' {...register("cpf")} />
+      <div className="col-md-4 ms-3">
+      <label className='form-label'>CPF</label>
+      <input className="form-control" name='cpf' type="text" size='11'  {...register("cpf", {pattern:"^[0-9]{3}?[0-9]{3}?[0-9]{3}?[0-9]{2}"})} />
+      <span>{errors.cpf?.message}</span>
       </div>
 
-      <div>
-     <label>Data Nascimento</label><input className='inputT'  type='date' name='datanasc'   {...register("datanasc")} />
-     </div>
+      <div className="col-md-4 offset-md-1">
+      <label className='form-label'>Data Nascimento</label>
+      <input className='form-control'  type='date' name='datanasc'  {...register("datanasc")} />
+      <span>{errors.datanasc?.message}</span>
+      </div>
 
-    <div>
-    <label>Naturalidade</label> <input className='inputT' type="text" name="naturalidade"  size="20" maxLength="40"  {...register("naturalidade")} />
-     </div>
+      <div className='col-md-4'>
+      <label className='form-label'>Naturalidade</label> 
+      <input className='form-control' type="text" name="naturalidade"  size="20" maxLength="40"  {...register("naturalidade")} />
+      </div>
 
-     <div>
-     <label>Endereço</label><input className='inputT' type="text" name="endereco"  size="20" maxLength="40"  {...register("endereco")}/>
-     </div>
+      <div className='col-md-10 offset-md-1'>
+      <label className='form-label'>Endereço</label>
+      <input className='form-control' type="text" name="endereco"  size="20" maxLength="40"  {...register("endereco")}/>
+      </div>
 
-     <div>
-     <label>Bairro</label><input className='inputT' type="text" name="bairro"  size="20" maxLength="40"  {...register("bairro")} />
-     </div>
+      <div className='col-md-6 offset-md-1'>
+      <label className='form-label'>Bairro</label><input className='form-control' type="text" name="bairro"  size="20" maxLength="40"  {...register("bairro")} />
+      </div>
 
-      <div>
-     <label>Cidade</label><input className='inputT' type="text" name="cidade"  size="20" maxLength="40"  {...register("cidade")} />
-     </div>
+      <div className="col-md-4 ms-1" >
+      <label className='form-label'>Cidade</label><input className='form-control' type="text" name="cidade"  size="20" maxLength="40"  {...register("cidade")} />
+      </div>
 
-     <div>
-     <label>CEP</label><input className='inputT' type="text" name="cep"  size="20" maxLength="40"  {...register("cep")} />
-     </div>
+      <div className='col-md-4 offset-md-1'>
+      <label className='form-label'>CEP</label><input className='form-control' type="text" name="cep"  size="20" maxLength="40"  {...register("cep")} />
+      </div>
 
-     <div >
-      <label>UF</label> <select className='select-estado' type='text'  name='estado' {...register("estado")}>
+      <div className="col-md-2  offset-md-2" >
+      <label className='form-label'>UF</label> 
+      <select className='form-select' type='text'  name='estado' {...register("estado")}>
         <option value='BA' selected >BA</option>
         <option value='SP'>SP</option>
         <option value='RJ'>RJ</option>
@@ -155,10 +193,13 @@ export default function Register() {
         <option value='SC'>SC</option>
         </select>
         </div>
-        <button className='btncadastro' type='submit'>Confirmar cadastro</button>
-        </form>
        
-    </div>
+        <div className='col-12 offset-md-1 gy-4 '>
+        <button className='btncadastro' type='submit'>Confirmar cadastro</button>
+        </div>
+        </form>
+
+          </div>
 
     </>
   );

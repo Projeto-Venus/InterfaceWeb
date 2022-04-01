@@ -1,11 +1,12 @@
 body{
   background: #f5f5f54b;
-max-width: 1440px;
+max-width: 1400px;
 max-height: 780px;
 }
 
 footer{
-    width: 1520px;
+    text-align: center;
+    width: 1500px;
     height: 80px;
     background: rgba(164, 154, 212, 0.5);
     margin-top:-16px;
@@ -31,7 +32,8 @@ li{
     display: inline-block;  /* neste caso infileirando a lista do menu em linha */
    background-color:#dddddd;
    padding: 10px;  /* o padding determina o tamanho da borda */
-   width: 80px;
+   width: 85px;
+
    margin: 10px; /* o margin nesse caso vai determinar a distancia de um objeto para outro da lista */
    border-radius: 12px;
    transition: 2s;
@@ -55,13 +57,9 @@ li:hover { /* quando o mouse passa por cima de cada item da lista*/
     box-sizing: border-box;
     position: relative;
     border:none;
-    text-align: center;
-    align-content: center;
     width: 170px;
     height: 40px;
     background: rgba(186, 173, 241, 0.5);
-    border-radius: 19px;
-    margin-left: 100px;
     color: #FEFFFE;
     cursor: pointer;
     }
@@ -72,8 +70,6 @@ li:hover { /* quando o mouse passa por cima de cada item da lista*/
         width: 170px;
         height: 40px;
         background: rgba(154, 135, 241, 0.5);
-        border-radius: 19px;
-        margin-left: 100px;
         color:rgba(130, 108, 228, 0.5);
         font-weight: 900;    /* como se fosse a groçura da letra */
         cursor: pointer;
@@ -82,54 +78,15 @@ li:hover { /* quando o mouse passa por cima de cada item da lista*/
     .register{
         position: absolute;
         background: rgba(186, 173, 241, 0.5);
-        border-radius: 12px;
-       
-        
-        border: 2px solid #BAADF1;
-        width: 1000px;
+        border-radius: 15px;
+        border: 6px solid #BAADF1;
+        width: 900px;
         height: 900px;
-        margin-left: 300px;
-        top:90px;
+        top: 90px;
+        margin-left: 360px;
         background-color: #fefffec4;
     }
 
-.formularioConta{
-position: relative;
-top: 20px;
-
-}
-
-.inputT{
-position: relative;
-width: 340px;
-max-width: 370px;
-padding: 5px;  /* espaçamento interno*/
-text-align: justify;
-margin: 5px;
-height: 25px;
-margin-right: 450px;
-background: rgba(196, 196, 196, 0.45);
-border-radius: 17px;
-}
-
-
-.select-raca select{
-    background: rgba(196, 196, 196, 0.45);
-    width: 340px;
-    max-width: 370px;
-    height: 40px;
-    border-radius: 12px;
-}
-
-
-.select-estado{
-    background: rgba(196, 196, 196, 0.45);
-    border-color: #BAADF1;
-    width: 70px;
-    height: 30px;
-    margin: 20px;
-    border-radius: 12px;
-}
 
 
 strong{
@@ -148,7 +105,7 @@ strong{
     font-size: 25px;
     line-height: 38px;
     
-    color: #000000;
+    color: #a623c0;
 
 }
 span{

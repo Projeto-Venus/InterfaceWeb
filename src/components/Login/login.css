@@ -18,6 +18,7 @@ background: rgba(186, 173, 241, 0.5);
 
 .login{
 position: absolute;
+text-align: center;
 align-content: center;
 align-items: center;
 width: 450px;
