@@ -2,14 +2,14 @@ import './register.css';
 import { useEffect, useState } from 'react';
 import {useForm} from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import api from '../../services/api';
-import Logo from '../../assets/logo-venus.png';
-import medicafundo from '../../assets/clinica-medica-chamada.jpg';
+import {api} from '../../../services/api'
+import Logo from '../../../assets/logo-venus.png';
+import medicafundo from '../../../assets/clinica-medica-chamada.jpg';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
 
-export default function Register() {
+export default function RegisterPage() {
   const [formValues,setFormValues] = useState({});
   const navigate = useNavigate();
 
@@ -18,12 +18,13 @@ export default function Register() {
   }
 
   const schema = yup.object({
-    nome: yup.string().min(10,"O campo deve conter no minimo 10 caracters").matches(/^[aA-zZ\s]+$/,"Nome inválido!").required("Campo Obrigatório!"),
-    nomesocial: yup.string().min(4,"O campo deve conter no minimo 4 caracters").required("Campo Obrigtório!"),
-    numero_cartao: yup.string().length(8,"O campo deve conter 8 números!").matches(/^[0-9]{8}/,"Número Inválido").required("Campo Obrigtório!"),
-    datanasc:yup.date().min(getFormatedDate('01/01/1950'),"data inválida!").max(getFormatedDate('31/12/2005'), "data inválida!").required("Campo obrigatório"),
-    cpf:yup.string().length(11,"Cpf inválido!").matches(/^[0-9]{3}?[0-9]{3}?[0-9]{3}?[0-9]{2}/,"Cpf inválido!").required("Campo obrigatório!")
-   
+    nome_cadastro: yup.string().min(10,"O campo deve conter no minimo 10 caracters").matches(/^[aA-zZ\s]+$/,"Nome inválido!").required("Campo Obrigatório!"),
+    nome_social_cad: yup.string().min(4,"O campo deve conter no minimo 4 caracters").required("Campo Obrigtório!"),
+    email:yup.string().email().required("Campo Obrigtório!"),
+    num_cartao: yup.string().length(8,"O campo deve conter 8 números!").matches(/^[0-9]{8}/,"Número Inválido").required("Campo Obrigatório!"),
+    data_nasc:yup.date().min(getFormatedDate('01/01/1950'),"data inválida!").max(getFormatedDate('31/12/2005'), "data inválida!").required("Campo obrigatório"),
+    cep:yup.string().length(8,"O campo deve possuir 8 números!").matches(/^[0-9]{8}/,"CEP Inválido").required("Campo Obrigatório!")
+  
   }).required();
 
   const {register, handleSubmit ,formState: { errors }} = useForm({resolver:yupResolver(schema)});
@@ -39,47 +40,30 @@ export default function Register() {
 
   }
 
-  useEffect(()=>{
+ /* useEffect(()=>{
     api.get('/users').then((response)=>{
       console.log(response.data);
     }).catch(err=>{
       console.log(err);
     })
-  },[])
+  },[])*/
 
-  
+  const  onSubmit = async(dataform)=>{
+ 
+ const {nome_cadastro, nome_social_cad, email, num_cartao, data_nasc,  
+  raca,naturalidade, endereco, bairro, cidade,
+estado, cep} = dataform;
+console.log(dataform)
 
-  /*const handleRegister = data=>{
-    
-    //navigate('/');
-    //console.log(data.FormData);
-    console.log(data);
-    axios.post("http://localhost:3001",{
-      nome_cadastro: formValues.nome,
-      nome_social_cadastro:formValues.nomesocial,
-      login:formValues.login,
-      senha:formValues.senha,
-      num_cartao_nacional: formValues.numero_cartao,
-      cpf: formValues.cpf,
-      data_nascimento:formValues.datanasc,
-      raca: formValues.raca,
-      naturalidade:formValues.naturalidade,
-      endereco:formValues.endereco,
-      bairro: formValues.bairro,
-      cidade: formValues.cidade,
-      estado: formValues.estado,
-      cep: formValues.cep,
-
-    }).then((response)=>{
-      
-    })
-  }*/
-
-  const  onSubmit =(dados)=>{
- console.log(dados);
-
+const token = localStorage.getItem('token')
+    const user = JSON.parse(localStorage.getItem('user'));
+    const user_id = user.id;
+    console.log(user_id)
+    api.defaults.headers.Authorization = `Bearer ${token}`
     //console.log('Formulario:', formValues);
-    api.post('/users', {dados}).then((response)=>{
+   await api.post(`/users/${user_id}/register`, {nome_cadastro, nome_social_cad, email, num_cartao, data_nasc,  
+    raca,naturalidade, endereco, bairro, cidade,
+estado, cep}).then(response=>{
       console.log(response);
     }).catch(err=>{
       console.log(err);
@@ -108,25 +92,26 @@ export default function Register() {
 
     <div className="col-md-5 offset-md-1">
     <label className="form-label">Nome</label>
-    <input className='form-control' type="text" inputMode="text"  {...register("nome")} />
-    <span>{errors.nome?.message}</span>
+    <input className='form-control' type="text" inputMode="text"  {...register("nome_cadastro")} />
+    <span>{errors.nome_cadastro?.message}</span>
     </div>
 
     <div className="col-md-5 ms-3">
     <label className="form-label">Nome Social</label>
-    <input className="form-control" type="text"    {...register("nomesocial")}/>
-    <span>{errors.nomesocial?.message}</span>
+    <input className="form-control" type="text"    {...register("nome_social_cad")}/>
+    <span>{errors.nome_social_cad?.message}</span>
     </div>
 
     <div className='col-md-6 offset-md-1'>
     <label className='form-label'>Email</label>
-    <input className="form-control" type="email" name="login"  {...register("login")} />
+    <input className="form-control" type="email" name="email"  {...register("email")} />
+    <span>{errors.email?.message}</span>
     </div>
 
     <div className="col-md-6 offset-md-1">
     <label className='form-label'>Número CSN</label>
-    <input className="form-control" type="text" name="numero_cartao" inputMode="numeric" {...register("numero_cartao")}  size="20" maxLength="40"/>
-    <span>{errors.numero_cartao?.message}</span>
+    <input className="form-control" type="text" name="num_cartao" inputMode="numeric" {...register("num_cartao")}  size="20" maxLength="40"/>
+    <span>{errors.num_cartao?.message}</span>
     </div>
 
       <div className="col-md-4 ms-3" >
@@ -138,21 +123,10 @@ export default function Register() {
         </select>
         </div>
 
-        <div className="col-md-6 offset-md-1">
-      <label className='form-label'>Senha</label> 
-      <input className='form-control' type="password" name="senha"  size="20" maxLength="20"   {...register("senha")} />
-      </div>
-
-      <div className="col-md-4 ms-3">
-      <label className='form-label'>CPF</label>
-      <input className="form-control" name='cpf' type="text" size='11'  {...register("cpf", {pattern:"^[0-9]{3}?[0-9]{3}?[0-9]{3}?[0-9]{2}"})} />
-      <span>{errors.cpf?.message}</span>
-      </div>
-
       <div className="col-md-4 offset-md-1">
       <label className='form-label'>Data Nascimento</label>
-      <input className='form-control'  type='date' name='datanasc'  {...register("datanasc")} />
-      <span>{errors.datanasc?.message}</span>
+      <input className='form-control'  type='date' name='data_nasc'  {...register("data_nasc")} />
+      <span>{errors.data_nasc?.message}</span>
       </div>
 
       <div className='col-md-4'>
@@ -179,7 +153,7 @@ export default function Register() {
 
       <div className="col-md-2  offset-md-2" >
       <label className='form-label'>UF</label> 
-      <select className='form-select' type='text'  name='estado' {...register("estado")}>
+      <select className='form-select' type='text'  name='estado'  {...register("estado")}>
         <option value='BA' selected >BA</option>
         <option value='SP'>SP</option>
         <option value='RJ'>RJ</option>
