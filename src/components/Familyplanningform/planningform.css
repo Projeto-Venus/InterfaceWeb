@@ -1,0 +1,26 @@
+.familyplanning-content{
+    margin-left: 25%;
+    margin-top: -8%;
+    width: 50%;
+    height: 50%;
+}
+ 
+
+
+.familyplanning-content tr{
+    border:3px solid #BAADF1
+}
+
+.familyplanning-content td{
+    border:3px solid #BAADF1
+}
+
+.familyplanning-content th{
+    border:3px solid #BAADF1
+}
+
+.familyplanning-content input{
+    border:hidden;
+    background-color:#f9f9f9;
+    
+}

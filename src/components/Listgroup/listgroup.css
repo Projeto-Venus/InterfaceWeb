@@ -1,0 +1,19 @@
+.btn-logout{
+    box-sizing: border-box;
+    position: relative;
+    border:none;
+    width: 255px;
+    height: 40px;
+    background: rgba(186, 173, 241, 0.5);
+    color: #FEFFFE;
+    cursor: pointer;
+  }
+
+  .btn-logout:hover{
+    
+    border:none;
+    background: rgba(154, 135, 241, 0.5);
+    color:rgba(130, 108, 228, 0.5);
+    font-weight: 900;    /* como se fosse a groçura da letra */
+    cursor: pointer;
+    }

@@ -1,71 +1,28 @@
-body{
-padding: 0px;
-max-width: 100vw;
-max-height: 750px;
-background: #FFFFFF;
-}
 
 .border-elipse{
-position: absolute;
-    width: 1300px;
-    height: 910px;
+    position: absolute;
+    width:1200px;
+    height:700px;
     border-radius: 50%;
-    margin: -40px;
-    left: 513px;
-    top:-500px;
-background: rgba(186, 173, 241, 0.5);
-}
-
-.login{
-position: absolute;
-text-align: center;
-align-content: center;
-align-items: center;
-width: 450px;
-height: 450px;
-left: 50px;
-top: 80px;
-border-radius: 19px;
+    top:-35%;
+    margin-left: 35%;
+    background: rgba(186, 173, 241, 0.5);
 }
 
 .logo-login{
-    width: 100%;
-    height: 100%;
-    top: -65px;
-    margin-left: 360px;
-    margin-top: -160px;
+    width: 900px;
+    height: 600px;
+    margin-left: 40%;
+    margin-top: -25%;
+}
+.form-login{
+    text-align: center;
+    border-radius: 19px;
+    margin-right: 70%;
+    margin-top: 10%;
 }
 
-
-.titulo h3{
-    position: absolute;
-width: 505px;
-height: 44px;
-top: 329px;
-margin-left: 260px;
-text-align:left;
-font-family: Poppins;
-font-style: normal;
-font-weight: 300;
-font-size: 12px;
-line-height: 121.19%;
-/* or 22px */
-
-letter-spacing: 0.41em;
-text-transform: uppercase;
-
-color: #FEFFFE;
-}
-
-.formulario{
-    position: relative;
-    top: -10px;
-}
-
-
-.formulario input{
-    text-align: left;
-    margin-top: 20px;
+.form-login input{
     width: 350px;
     height: 40px;
     background: #BAADF1;
@@ -73,117 +30,28 @@ color: #FEFFFE;
     border:none;
 }
 
-.formulario h1{
-    position: relative;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 500;
-font-size: 40px;
-top: 60px;
-line-height: 75px;
-text-align: center;
-color: #000000;
-}
-
-
-.btnsubmit{
-position: absolute;
-border:none;
-text-align: center;
-width: 180px;
-height: 50px;
-margin-top: 30px;
-margin-left: -80px;
-background: rgba(186, 173, 241, 0.5);
-border-radius: 19px;
-font-weight: 900;    /* como se fosse a groçura da letra */
-color: #FEFFFE;
-cursor: pointer;
-}
-
-.btnsubmit:hover{
-    position: absolute;
-    border:none;
+.form-login h1{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 75px;
     text-align: center;
-    width: 180px;
-    height: 50px;
-    margin-top: 30px;
-    margin-left: -80px;
-    background: rgba(120, 112, 160, 0.5);
-    border-radius: 19px;
-    font-weight: 900;    /* como se fosse a groçura da letra */
-    color: #FEFFFE;
+    color: #a04bd2;
+}
+
+.form-login h3{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: bold;
+    font-size:18px;
+    text-decoration-line: underline;
+    color: rgba(186, 173, 241, 0.5);
     cursor: pointer;
     }
 
-.formulario h3{
-    font-family: Poppins;
-font-style: normal;
-font-weight: bold;
-font-size: 12px;
-line-height: 0%;
-/* identical to box height, or 0px */
-margin-left: 170px;
-margin-top:100px;
 
-display: flex;
-align-items: center;
-text-decoration-line: underline;
-text-transform: uppercase;
-
-color: rgba(186, 173, 241, 0.5);
-cursor: pointer;
-}
-
-
-.formulario:hover h3{
-    font-family: Poppins;
-font-style: normal;
-font-weight: bold;
-font-size: 12px;
-line-height: 0%;
-/* identical to box height, or 0px */
-margin-left: 170px;
-margin-top:100px;
-
-display: flex;
-align-items: center;
-text-decoration-line: underline;
-text-transform: uppercase;
-
-color: rgba(131, 129, 141, 0.5);
-cursor: pointer;
-}
-
-.btnnewconta{
-position: absolute;
-width: 180px;
-height: 50px;
-margin-left: -80px;
-margin-top: 10px;
-border:none;
-background: rgba(186, 173, 241, 0.5);
-border-radius: 19px;
-color: #FEFFFE;
-font-weight: 900;    /* como se fosse a groçura da letra */
-cursor: pointer;
-
-}
-.btnnewconta:hover{
-    position: absolute;
-    width: 180px;
-    height: 50px;
-    margin-left: -80px;
-    margin-top: 10px;
-    border:none;
-    background: rgba(120, 112, 160, 0.5);
-    border-radius: 19px;
-    color: #FEFFFE;
-    font-weight: 900;    /* como se fosse a groçura da letra */
+.form-login:hover h3{
+    color: rgba(131, 129, 141, 0.5);
     cursor: pointer;
-    }
-
-    span{
-        align-content: flex-end;
-        color: red;
-    }
+}
