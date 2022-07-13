@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './registerlogin.css';
 import {useForm} from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -26,32 +26,13 @@ export default function RegisterLoginPage() {
   const {register, handleSubmit ,formState: { errors }} = useForm({resolver:yupResolver(schema)});
 
 
-
- /* const handleInputChange =(e)=>{
-    const {target} = e;
-
-    const {name,value} = target; 
-    //console.log('*handleinput*',name,value );
-    setFormValues({...formValues,[name]:value});
-
-  }*/
-
-/*  useEffect(()=>{
-    api.get('/users').then((response)=>{
-      console.log(response.data);
-    }).catch(err=>{
-      console.log(err);
-    })
-  },[])*/
-
-
   const onSubmit = async (dadosform)=>{
  console.log(dadosform);
  const {cpf, password} = dadosform;
 
     await api.post('/users', {cpf, password}).then((response)=>{
       setFormaccepted(true);
-      console.log(response);
+     
     }).catch(err=>{
       setFormaccepted(false);
       console.log(err);

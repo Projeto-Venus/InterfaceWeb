@@ -1,19 +1,22 @@
 
 import './headerhome.css'
-import Logo from '../../assets/logo-venus.png'
 
-export default function Headerhome(){
-    return(
+import { HiUserCircle } from 'react-icons/hi';
+
+export default function Headerhome() {
+    return (
         <>
-        <header className='header-home'>
-            <ul type="disc">
-                <li>Painel</li>
-                <li>Agenda</li>
-                <li>Pacientes</li>
-                 <li>Outros</li>
-            </ul>
-             <img src={Logo} className='logo-header' alt='logo-venus' ></img>
-        </header>
+            <nav className="content-nav">
+                    <div id='user-id'>
+                    <h6>Olá, Tassio Neves Santos</h6>
+                    <p>CPF: 0756910532 <br/> CNS: 075694343410532</p>
+                    
+                    </div>
+                   
+                    <div id='icons-header'>
+                        <h1><HiUserCircle /></h1>
+                    </div>
+            </nav>
         </>
     )
 }

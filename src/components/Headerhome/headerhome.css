@@ -1,43 +1,22 @@
-.header-home{
-  text-align: center;
-    width: 100vw;
-    height: 80px;
-    justify-content: space-between;
-    background: rgba(164, 154, 212, 0.5);
-    align-content: flex-end;
-    top:auto;
+
+.content-nav{
+display: flex;
+ justify-content: space-between;
+ align-items: center;
+ background-color:rgba(154, 135, 241, 0.5);
+}
+#icons-header{
+margin-right: 30px;
+color: rgba(155, 28, 214, 0.558);
+}
+
+#icons-header:hover{
+ 
+  color: rgba(51, 165, 231, 0.558);
+  cursor: pointer;
   }
-
-  .logo-header{
-    width: 250px;
-    height: 160px;
-    margin-right: 1200px;
-    margin-top: -113px;
+#user-id{
+  
+margin-left: 30px;
 }
 
-.header-home ul{
-    list-style: none;  /* tipo de marcardor da lista nessa caso nenhum*/
-    text-transform: uppercase;  /* serve para transformar o texto nesse caso em letra maiuscula*/
-    max-width: 40%;
-    display:inline-block;
-    position: relative;    /* posicao absolute se refere ao site geral e a relativa apenas dentro do container menu*/
-    top: 10px;       /* nesse caso movendo do topo para baixo ou cima*/
-    width: auto;
-}
-
-.header-home li{
-    display: inline-block;  /* neste caso infileirando a lista do menu em linha */
-   background-color:#dddddd;
-   padding: 10px;  /* o padding determina o tamanho da borda */
-   width: 90px;
-   margin: 10px; /* o margin nesse caso vai determinar a distancia de um objeto para outro da lista */
-   border-radius: 12px;
-   transition: 2s;
-   cursor: pointer;
-}
-
-.header-home li:hover { /* quando o mouse passa por cima de cada item da lista*/
-    background-color: #606060;
-    border-radius: 12px;
-       
-  }

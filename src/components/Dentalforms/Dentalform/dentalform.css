@@ -1,0 +1,37 @@
+.container {
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 350px;
+    
+}
+
+.container ul {
+    margin: -13px;
+    display: inline-block
+}
+.container label {
+    margin-top: 3px;
+    margin-left: 2px;
+    text-align: center;
+}
+
+.list-5 {
+    margin-left: 105px;
+}
+
+.list-8 {
+    margin-left: 105px;
+}
+
+.list-9 {
+    margin-right: 105px;
+}
+
+.list-10 {
+    margin-right: 105px;
+}
+
+.form-table {
+    display: flex;
+}
+

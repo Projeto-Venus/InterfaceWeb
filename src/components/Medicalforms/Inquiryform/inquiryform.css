@@ -1,0 +1,30 @@
+.content-table{
+   width: 100%;
+   border-radius: 20px;
+   
+}
+
+
+.content-table th{
+    border:3px solid #b010b8;
+    
+}
+
+.content-table td{
+  
+    border:3px solid #b010b8;
+}
+
+.content-table input{
+    border:hidden;
+    background-color:rgba(130, 108, 228, 0.5);
+    
+}
+
+.content-table th{
+   background-color:rgba(130, 108, 228, 0.5);
+}
+
+.content-table table{
+    background-color:rgba(130, 108, 228, 0.5);
+ }

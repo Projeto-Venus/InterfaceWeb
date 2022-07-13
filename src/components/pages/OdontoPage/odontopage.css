@@ -1,0 +1,21 @@
+.content-odontopage {
+    display: flex;
+}
+
+
+
+#content-odontoform {
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 820px;
+    border-radius: 15px;
+}
+
+
+
+.content {
+    width: 100%;
+    flex-direction: column;
+}
+

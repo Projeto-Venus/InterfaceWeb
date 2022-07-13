@@ -1,6 +1,6 @@
 import './login.css';
 import { useNavigate } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import Logo from '../../../assets/logo-venus.png';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AuthContext } from '../../contexts/auth';
@@ -33,13 +33,14 @@ export default function LoginPage() {
   return (
     <>
 
-      <div className='border-elipse'></div>
+      <div className='border-elipse'>
+      <img className='logo-login' src={Logo} alt='logo-venus' ></img>
+      </div>
     
         <form className='form-login' onSubmit={handleSubmit(onSubmit)}>
-          <div>
-          <h1>Bem Vindos</h1>
-          </div>
           
+          <h1>Bem Vindos</h1>
+
           <div>
             <label><AiOutlineUser /></label>
             <input type='text' placeholder='CPF'{...register("cpf")}></input><br/>
@@ -58,7 +59,7 @@ export default function LoginPage() {
 
         </form>
     
-      <img className='logo-login' src={Logo} alt='logo-venus' ></img>
+     
       <Footer />
     </>
   );

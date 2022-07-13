@@ -1,0 +1,19 @@
+.dentalrecord-form{
+    background-color: rgba(125, 156, 202, 0.633);
+    border-radius: 15px;
+}
+
+.dentalrecord-form h4{
+text-align: center;
+}
+
+.dentalrecord-form button{
+    margin-bottom:  20px;
+}
+
+.dentalrecord-content{
+    margin-left: 25%;
+    margin-top: 2%;
+    width: 50%;
+    height: 50%;
+}

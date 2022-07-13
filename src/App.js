@@ -8,6 +8,9 @@ import HomePage from './components/pages/HomePage';
 import ForgotpasswordPage from './components/pages/ForgotpasswordPage';
 import DatacomplementaryPage from './components/pages/DatacomplementaryPage';
 import { AuthProvider, AuthContext} from './components/contexts/auth';
+import OdontoPage from './components/pages/OdontoPage';
+import Prontuary from './components/pages/Prontuary';
+
 
 
 function App() {
@@ -37,6 +40,8 @@ function App() {
             <Route path='/home' element={<Private><HomePage/></Private>}/>
             <Route path='/home/dadospessoais' element={<Private><RegisterPage/></Private>}/>
             <Route path='/home/dadoscomplementares' element={<Private><DatacomplementaryPage/></Private>}/>
+            <Route path='/home/ficha-odonto' element={<Private><OdontoPage/></Private>}/>
+            <Route path='/home/prontuario' element={<Private><Prontuary/></Private>}/>
         </Routes>
         </AuthProvider>
       </Router>

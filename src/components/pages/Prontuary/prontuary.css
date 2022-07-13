@@ -1,0 +1,16 @@
+.content-prontuary {
+    width: 100%;
+}
+
+.content-prontuarypage {
+    display: flex;
+}
+
+.content-prontuary form{
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 820px;
+    border-radius: 15px;
+    padding: 0 20px;
+}

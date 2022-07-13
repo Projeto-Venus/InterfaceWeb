@@ -5,24 +5,26 @@ import Header from '../../Header/index'
 
 export default function ForgotpasswordPage() {
     const navigate = useNavigate();
-    return(
+    return (
         <>
-        <Header/>
-        <div className="forgotpassword">
-        <h1>Redefinir Senha</h1>
-        <form className="row" >
-        <p>Lhe enviaremos um e-mail com mais informações sobre como redefinir sua senha</p>
-            <div className='col-md-6 ms-3'>
-        
-            <label className='form-label'>Email</label>
-            <input className="form-control" name='cpf' type="text" size='11'  />
-            </div>
+            <Header />
+            <div className="forgotpassword">
 
-            <div className='col-md-4 gy-4' >
-            <button className='btncadastro' type='submit'>Enviar email</button>
-            </div>
-        
-            </form>
+                <form className="row" >
+
+                    <div className='col-md-7 '>
+                        <div>
+                            <h1>Redefinir Senha</h1>
+                            <p>Enviaremos um e-mail com mais informações sobre como redefinir sua senha</p>
+                        </div>
+                        <div>
+                            <label className='form-label'>Email</label>
+                            <input className="form-control" name='email' type="text" size='11' />
+                            <button className='btn-main' type='submit'>Enviar email</button>
+                        </div>
+                    </div>
+
+                </form>
 
             </div>
         </>
